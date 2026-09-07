@@ -4,10 +4,10 @@ name: terraform CI
 on:
   push:
     branches:
-     - main
+     - github-action
   pull_request:
     branches:
-      - main   
+      - github-action   
 jobs:
   terraform_init:
     name: Terraform Init
