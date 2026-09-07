@@ -13,8 +13,8 @@ jobs:
     name: Terraform Init
     runs-on: ubuntu-latest
     steps:
-      - name: terraform init
-        run: init
+      - name: terraform_init
+        run: terraform init
     
      
      
