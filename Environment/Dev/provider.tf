@@ -6,7 +6,7 @@ terraform {
     }
   }
   backend "azurerm" {
-    resource_group_name  = "microservice-rg"
+    resource_group_name  = "dhondu-rg"
     storage_account_name = "microdevinfrastorage456"
     container_name       = "dev-container"
     key                  = "dev.tfstate"
@@ -15,5 +15,5 @@ terraform {
 
 provider "azurerm" {
   features {}
-  subscription_id = "73db7a9a-aef7-41fe-8a49-10610ce568af"
+  subscription_id = "ed2a265e-c844-4e28-b540-796a000a90d4"
 }
