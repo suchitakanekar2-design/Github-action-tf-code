@@ -9,12 +9,22 @@ on:
     branches:
       - github-action   
 jobs:
-  terraform_init:
-    name: Terraform Init
+  terraform:
+    name: terraform CI
     runs-on: ubuntu-latest
     steps:
-      - name: terraform_init
-        run: terraform init
-    
+    - name: Checkout code
+      uses: actions/checkout@v4
+  
+    - name: Setup Terraform 
+      uses: hashicorp/setup-terraform@v3
+        
+    - name: Check Terraform Version
+      run: terraform version
+  
+    - name: Terraform Init
+      working-directory: Environment/Dev
+      run: terraform init
+   
      
      
