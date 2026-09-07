@@ -5,10 +5,16 @@ on:
   push:
     branches:
      - main
-job:
-  terraform:
+  pull_request:
+    branches:
+      - main   
+jobs:
+  terraform_init:
+    name: Terraform Init
     runs-on: ubuntu-latest
     steps:
+      - name: terraform init
+        run: init
     
      
      
