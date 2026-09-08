@@ -49,7 +49,7 @@ jobs:
 
       - name: terraform fmt
         working-directory: Environment/Dev
-        run: terraform fmt
+        run: terraform fmt -check -recursive
 
       - name: terraform Debug
         working-directory: Environment/Dev
@@ -59,7 +59,7 @@ jobs:
 
       - name: terraform plan
         working-directory: Environment/Dev
-        run: terraform plan 
+        run: terraform plan -input=false
     
         timeout-minutes: 15
 
@@ -73,7 +73,7 @@ jobs:
       - name: Lint Terraform Code
         uses: "infinite-automations/tflint-all-in-one@v1.0.1"
         with:
-          directory: "./terraform"      
+          directory: "./Environment/Dev"      
    
   scan:
     permissions:
@@ -82,7 +82,8 @@ jobs:
       actions: read
     runs-on: ubuntu-latest   
     steps:
-      - uses: actions/checkout@v3
+      - name: checkout code
+        uses: actions/checkout@v3
 
       - name: Checkov GitHub Action
         uses: bridgecrewio/checkov-action@v12

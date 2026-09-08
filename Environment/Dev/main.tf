@@ -51,10 +51,10 @@ module "azure_db_server" {
 }
 
 module "azure_db" {
-  depends_on = [ module.rg ]
-  source = "../../Modules/azurerm_sql_database"
+  depends_on = [module.rg]
+  source     = "../../Modules/azurerm_sql_database"
   db_details = var.db_details
-  
+
 }
 
 module "azure_keyvault" {
