@@ -42,6 +42,18 @@ jobs:
       - name: Terraform Init
         working-directory: Environment/Dev
         run: terraform init
+
+      - name: Terraform Validate
+        working-directory: Environment/Dev
+        run: terraform Validate
+
+      - name: terraform fmt
+        working-directory: Environment/Dev
+        run: terraform fmt
+
+      - name: terraform plan
+        working-directory: Environment/Dev
+        run: terraform plan
    
      
      
