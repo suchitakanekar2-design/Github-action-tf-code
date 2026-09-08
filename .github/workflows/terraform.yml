@@ -45,7 +45,7 @@ jobs:
 
       - name: Terraform Validate
         working-directory: Environment/Dev
-        run: terraform Validate
+        run: terraform validate
 
       - name: terraform fmt
         working-directory: Environment/Dev
