@@ -43,7 +43,7 @@ jobs:
         working-directory: Environment/Dev
         run: terraform init
 
-      - name: Terraform Validate
+      - name: Terraform validate
         working-directory: Environment/Dev
         run: terraform validate
 
