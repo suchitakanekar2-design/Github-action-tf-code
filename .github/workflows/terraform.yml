@@ -54,8 +54,42 @@ jobs:
       - name: terraform plan
         working-directory: Environment/Dev
         run: terraform plan
+
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Lint Terraform Code
+        uses: "infinite-automations/tflint-all-in-one@v1.0.1"
+        with:
+          directory: "./terraform"      
    
-     
+  scan:
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+    runs-on: ubuntu-latest   
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Checkov GitHub Action
+        uses: bridgecrewio/checkov-action@v12
+
+        with:
+          output_format: cli,sarif
+          output_file_path: console,results.sarif
+        
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v2
+
+        if: success() || failure()
+        with:
+          sarif_file: results.sarif
+
      
 
 
